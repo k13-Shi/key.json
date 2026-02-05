@@ -264,7 +264,7 @@ local function createWhitelistGUI()
             wait(1.5)
             
             if enteredKey == keyData.key then
-                statusLabel.Text = "❎KEY VALID - ACCESS GRANTED!"
+                statusLabel.Text = "🔓KEY VALID - ACCESS GRANTED!"
                 statusLabel.TextColor3 = Color3.fromRGB(100, 255, 100)
                 warningLabel.Text = "Loading script..."
                 warningLabel.TextColor3 = Color3.fromRGB(100, 255, 100)
