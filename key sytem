@@ -207,7 +207,7 @@ local function createWhitelistGUI()
     warningLabel.Size = UDim2.new(1, 0, 0, 20)
     warningLabel.Position = UDim2.new(0, 0, 0, 175)
     warningLabel.BackgroundTransparency = 1
-    warningLabel.Text = "âš ï¸ 1 ATTEMPT ONLY - WRONG KEY = KICK âš ï¸"
+    warningLabel.Text = "🔒  1 ATTEMPT ONLY - WRONG KEY = KICK 🖕"
     warningLabel.TextColor3 = Color3.fromRGB(255, 100, 100)
     warningLabel.TextSize = 11
     warningLabel.Font = Enum.Font.GothamBold
@@ -227,7 +227,7 @@ local function createWhitelistGUI()
         end
         
         if isWhitelisted() then
-            statusLabel.Text = "âœ… Whitelisted: " .. player.Name
+            statusLabel.Text = "Player Whitelisted: " .. player.Name
             statusLabel.TextColor3 = Color3.fromRGB(100, 255, 100)
             keyInput.PlaceholderText = "Enter key to continue..."
         else
@@ -264,7 +264,7 @@ local function createWhitelistGUI()
             wait(1.5)
             
             if enteredKey == keyData.key then
-                statusLabel.Text = "âœ… KEY VALID - ACCESS GRANTED!"
+                statusLabel.Text = "❎KEY VALID - ACCESS GRANTED!"
                 statusLabel.TextColor3 = Color3.fromRGB(100, 255, 100)
                 warningLabel.Text = "Loading script..."
                 warningLabel.TextColor3 = Color3.fromRGB(100, 255, 100)
