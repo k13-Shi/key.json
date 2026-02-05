@@ -273,7 +273,7 @@ local function createWhitelistGUI()
                 
                 -- Execute your main script here
                 pcall(function()
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/k13-Shi/PH-No.1/refs/heads/main/gui "))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/k13-Shi/PH-No.1/refs/heads/main/gui",true))()
                 end)
                 
                 screenGui:Destroy()
