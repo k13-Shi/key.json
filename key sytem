@@ -9,7 +9,7 @@ local player = Players.LocalPlayer
 local CONFIG = {
     -- Pastebin raw URLs (replace with your actual links)
     WHITELIST_URL = "https://raw.githubusercontent.com/k13-Shi/whitelist.json/refs/heads/main/whitelist.json ", -- Whitelist data
-    KEY_URL = "https://raw.githubusercontent.com/*********/******/refs/heads/main/key.json ",     -- Key data
+    KEY_URL = "https://raw.githubusercontent.com/k13-Shi/key.json/refs/heads/main/key.json ",     -- Key data
     
     FALLBACK_KEY = "HINDOT", -- Fallback key if URL fails
     MAX_RETRIES = 3,
