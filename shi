@@ -1,0 +1,79 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Orion Hub | Auto Hatch & Sell", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local OpenPetEvent       = ReplicatedStorage.RemotesEvent.OpenPetEvent
+local SellPetEvent       = ReplicatedStorage.RemotesEvent.SellPetEvent
+local Player              = game.Players.LocalPlayer
+
+local isAutoHatch       = false
+local isAutoSell        = false
+
+local selectedSellPets = {
+    ["Titan Gorilla"] = true,
+    ["Thunder Wolf"] = true
+}
+
+task.spawn(function()
+    while true do
+        if isAutoHatch then
+            pcall(function()
+                OpenPetEvent:FireServer("mythic2")
+            end)
+            task.wait(1.5)
+        else
+            task.wait(0.5)
+        end
+    end
+end)
+
+task.spawn(function()
+    while true do
+        if isAutoSell then
+            pcall(function()
+                local gui = Player.PlayerGui:FindFirstChild("gamegui")
+                local menu = gui and gui:FindFirstChild("petsMenu")
+                local items = menu and menu:FindFirstChild("pets_item")
+                
+                if items then
+                    for _, petFolder in ipairs(items:GetChildren()) do
+                        if not isAutoSell then break end
+                        if selectedSellPets[petFolder.Name] then
+                            SellPetEvent:FireServer(petFolder.Name)
+                            task.wait(0.1)
+                        end
+                    end
+                end
+            end)
+            task.wait(0.5)
+        else
+            task.wait(0.5)
+        end
+    end
+end)
+
+local MainTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+MainTab:AddLabel("Automation Control")
+
+MainTab:AddToggle({
+	Name = "Auto Hatch (Mythic 2)",
+	Default = false,
+	Callback = function(Value)
+		isAutoHatch = Value
+	end    
+})
+
+MainTab:AddToggle({
+	Name = "Auto Sell Selected Pets",
+	Default = false,
+	Callback = function(Value)
+		isAutoSell = Value
+	end    
+})
+
+OrionLib:Init()
